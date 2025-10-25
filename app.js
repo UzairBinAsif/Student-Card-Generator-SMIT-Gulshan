@@ -18,12 +18,21 @@ function showCard() {
         if (studentImage.files.length) {
             let imageURL = URL.createObjectURL(studentImage.files[0])
             
-            studentNameSpan.innerText = studentName.value
-            studentEmailSpan.innerText = studentEmail.value
-            studentNumberSpan.innerText = studentNumber.value
-            studentRollSpan.innerText = studentRoll.value
-            studentCourseSpan.innerText = studentCourse.value
-            studentImageDiv.style.backgroundImage = `url("${imageURL}")`
+            let studentDataObj = {
+                name : studentName.value,
+                email : studentEmail.value,
+                phone : studentNumber.value,
+                roll : studentRoll.value,
+                course : studentCourse.value,
+                image : imageURL
+            }
+
+            studentNameSpan.innerText = studentDataObj.name
+            studentEmailSpan.innerText = studentDataObj.email
+            studentNumberSpan.innerText = studentDataObj.phone
+            studentRollSpan.innerText = studentDataObj.roll
+            studentCourseSpan.innerText = studentDataObj.course
+            studentImageDiv.style.backgroundImage = `url("${studentDataObj.image}")`
             
             document.getElementsByClassName("right")[0].style.display = "block"
         } else {
